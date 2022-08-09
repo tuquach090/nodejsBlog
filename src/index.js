@@ -6,7 +6,7 @@ const app = express();
 const port = 3000;
 const route = require("./resource/routes");
 const db = require("./resource/config/db");
-
+const methodOverride = require("method-override");
 // Connect Db
 db.connect();
 
@@ -20,7 +20,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Template Engine
 app.engine("hbs", engine({
-    extname: ".hbs"
+    extname: ".hbs",
+    helpers: {
+        sum: (a, b) => a + b,
+    }
 }));
 
 
@@ -30,13 +33,16 @@ app.use(express.urlencoded({
 }));
 
 
+// method override
+app.use(methodOverride('_method'))
+
 // Set View Engine
 app.set("view engine", "hbs");
-app.set("views", path.join(__dirname, "/resource/views"));
+app.set("views", path.join(__dirname, "resource", "views"));
 
 
 // Route
 route(app);
 
 
-app.listen(port, (req, res) => console.log(`Example app listening at Http://localhost:${port}`));
+app.listen(port, (req, res) => console.log(`App listening at Http://localhost:${port}`));

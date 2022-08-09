@@ -1,0 +1,40 @@
+<div class="container py-4">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-center">EDIT COURESE</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 shadow-lg rounded p-3 mt-5 mx-auto">
+            <form action="/courses/{{course._id}}?_method=PUT" method="POST">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" name="name" id="name" value="{{course.name}}"
+                        placeholder="Enter Name">
+                </div>
+
+                <div class="mb-3">
+                    <label for="images" class="form-label">Images</label>
+                    <input type="text" class="form-control" name="images" id="images" value="{{course.images}}"
+                        placeholder="Link images">
+                </div>
+                <div class="mb-3">
+                    <label for="video_id" class="form-label">Video Id</label>
+                    <input type="text" class="form-control" name="video_id" id="video_id" value="{{course.video_id}}"
+                        placeholder="Enter Video Id">
+                </div>
+                <div class="mb-3">
+                    <label for="level" class="form-label">Level</label>
+                    <input type="text" class="form-control" name="level" id="level" value="{{course.level}}"
+                        placeholder="Enter level">
+                </div>
+                <div class="mb-3">
+                    <label for="desc" class="form-label">Description</label>
+                    <textarea name="description" id="desc" class="form-control"
+                        placeholder="Enter description">{{ course.description }}</textarea>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
